@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  db: # Banco de dados
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "2309"
+      POSTGRES_DB: "root"
+    deploy:
+      resources:
+        limits:
+          cpus: '1.20'
+          memory: '1.7GB'
