@@ -86,3 +86,7 @@ Para obter o número total de pessoas cadastradas.
 ```bash
 curl http://localhost:3000/contagem-pessoas
 ```
+
+## Links úteis
+- Monitoramento de CPU com Visual Studio: https://learn.microsoft.com/en-us/visualstudio/profiling/beginners-guide-to-performance-profiling?view=vs-2022
+- Monitoramento de RAM com Visual Studio: https://learn.microsoft.com/en-us/visualstudio/profiling/memory-usage?view=vs-2022
