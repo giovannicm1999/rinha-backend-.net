@@ -12,8 +12,8 @@ using rinha_backend.Context;
 namespace rinha_backend.Migrations
 {
     [DbContext(typeof(RinhaContext))]
-    [Migration("20230829045516_PessoaMigrationV1")]
-    partial class PessoaMigrationV1
+    [Migration("20230830025740_PessoaV1")]
+    partial class PessoaV1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,9 +33,12 @@ namespace rinha_backend.Migrations
                         .HasColumnName("id");
 
                     b.Property<string>("Apelido")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("apelido");
+
+                    b.Property<string>("DbStack")
+                        .HasColumnType("text")
+                        .HasColumnName("stack");
 
                     b.Property<string>("Nascimento")
                         .IsRequired()
@@ -43,13 +46,8 @@ namespace rinha_backend.Migrations
                         .HasColumnName("nascimento");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("nome");
-
-                    b.Property<string[]>("Stack")
-                        .HasColumnType("text[]")
-                        .HasColumnName("stack");
 
                     b.HasKey("Id");
 

@@ -31,7 +31,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Migrations\20230829002840_MigrationTestv2.cs" />
-    <Compile Remove="Migrations\RinhaContextModelSnapshot.cs" />
     <Compile Remove="Migrations\20230829010201_PessoalMigrationv2.Designer.cs" />
     <Compile Remove="Migrations\20230829010201_PessoalMigrationv2.cs" />
     <Compile Remove="Migrations\20230829002840_MigrationTestv2.Designer.cs" />

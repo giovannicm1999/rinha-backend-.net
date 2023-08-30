@@ -1,6 +1,6 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace rinha_backend.Entity
@@ -14,19 +14,36 @@ namespace rinha_backend.Entity
         public Guid? Id { get; set; }
 
         [Column("apelido")]
-        [Required]
-        public string Apelido { get; set; }
+        public string? Apelido { get; set; }
 
         [Column("nome")]
-        [Required]
-        public string Nome { get; set; }
+        public string? Nome { get; set; }
 
         [Column("nascimento")]
         [Required]
         public string Nascimento { get; set; }
 
         [Column("stack")]
-        public string[]? Stack { get; set; }
+        [JsonIgnore]
+        public string? DbStack { get; set; }
+
+        [NotMapped]
+        public List<string> Stack
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(DbStack))
+                {
+                    return DbStack.Split(',').ToList();
+                }
+                return new List<string>();
+            }
+            set
+            {
+                DbStack = string.Join(",", value);
+            }
+
+        }
     }
 }
 

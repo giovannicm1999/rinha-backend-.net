@@ -6,7 +6,6 @@ using rinha_backend.Repository;
 namespace rinha_backend.Controllers
 {
     [ApiController]
-    [Route("pessoas")]
     public class PessoaController : ControllerBase
     {
 
@@ -17,35 +16,42 @@ namespace rinha_backend.Controllers
             _repository = pessoaRepository;
         }
 
-        [HttpPost]
+        [HttpPost("pessoas")]
         public IActionResult Post(Pessoa pessoa)
         {
             try
             {
-                _repository.Save(pessoa);
-                return StatusCode(200, "Ok");
+                if (String.IsNullOrEmpty(pessoa.Nome) || String.IsNullOrEmpty(pessoa.Apelido))
+                    throw new Exception("requisição inválida");
+
+                var guid = _repository.Save(pessoa);
+                Response.Headers.Add("Location", $"/pessoas/{guid}");
+                return StatusCode(201);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(422, ex.Message);
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("pessoas/{id}")]
         public IActionResult GetById(Guid id)
         {
             try
             {
                 var pessoa = _repository.GetById(id);
+                if (pessoa == null)
+                    return StatusCode(404);
+
                 return StatusCode(200, pessoa);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(422, ex.Message);
             }
         }
 
-        [HttpGet()]
+        [HttpGet("pessoas")]
         public IActionResult GetByTerm(string t)
         {
             try
@@ -55,7 +61,21 @@ namespace rinha_backend.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(422, ex.Message);
+            }
+        }
+
+        [HttpGet("contagem-pessoas")]
+        public IActionResult GetCount()
+        {
+            try
+            {
+                var count = _repository.GetCount();
+                return StatusCode(200, count);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(422, ex.Message);
             }
         }
     }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace rinha_backend.Migrations
 {
     /// <inheritdoc />
-    public partial class MigrationTestv2 : Migration
+    public partial class PessoaV1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,12 +15,22 @@ namespace rinha_backend.Migrations
                 name: "pessoa",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uuid", nullable: false)
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    apelido = table.Column<string>(type: "text", nullable: true),
+                    nome = table.Column<string>(type: "text", nullable: true),
+                    nascimento = table.Column<string>(type: "text", nullable: false),
+                    stack = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_pessoa", x => x.id);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_pessoa_apelido",
+                table: "pessoa",
+                column: "apelido",
+                unique: true);
         }
 
         /// <inheritdoc />

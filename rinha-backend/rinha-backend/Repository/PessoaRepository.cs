@@ -15,12 +15,13 @@ namespace rinha_backend.Repository
             _context = context;
         }
 
-        public void Save(Pessoa pessoa)
+        public Guid? Save(Pessoa pessoa)
         {
             try
             {
-                _context.Add(pessoa);
+                _context.Pessoas.Add(pessoa);
                 _context.SaveChanges();
+                return pessoa.Id;
             }
             catch (Exception ex)
             {
@@ -45,8 +46,21 @@ namespace rinha_backend.Repository
         {
             try
             {
-                var pessoas = _context.Pessoas.Where(pessoa => pessoa.Apelido.Contains(termo) || pessoa.Nome.Contains(termo) || pessoa.Stack.Any(s => EF.Functions.Like(termo, s))).ToList();
+                var pessoas = _context.Pessoas.Where(pessoa => pessoa.Apelido.ToLower().Contains(termo.ToLower()) || pessoa.Nome.ToLower().Contains(termo.ToLower()) || pessoa.DbStack.ToLower().Contains(termo.ToLower())).ToList();
                 return pessoas;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int GetCount()
+        {
+            try
+            {
+                var count = _context.Pessoas.Count();
+                return count;
             }
             catch (Exception ex)
             {
