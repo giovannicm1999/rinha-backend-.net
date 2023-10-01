@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddDbContext<RinhaContext>(options => options.UseNpgsql(Environment.GetEnvironmentVariable("ConnectionString")));
+builder.Services.AddDbContext<RinhaContext>(options => options.UseNpgsql("Host=localhost;Database=root;Username=postgres;Password=2309"));
 
 builder.Services.AddTransient<IPessoaRepository, PessoaRepository>();
 

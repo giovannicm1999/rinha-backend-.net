@@ -7,20 +7,15 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workbench ActiveDocument="rinha-backend/Program.cs">
     <Files>
-      <File FileName="rinha-backend/Program.cs" Line="28" Column="11" />
+      <File FileName="rinha-backend/Program.cs" Line="12" Column="137" />
       <File FileName="rinha-backend/Controllers/PessoaController.cs" />
-      <File FileName="rinha-backend/Repository/PessoaRepository.cs" Line="32" Column="39" />
+      <File FileName="rinha-backend/Repository/PessoaRepository.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Option id="ShowAllFiles" value="True" />
-          <Node name="rinha-backend" expanded="True">
-            <Node name="rinha-backend">
-              <Node name="Entity" expanded="True" />
-              <Node name="Repository" expanded="True" />
-            </Node>
-          </Node>
+          <Node name="rinha-backend" expanded="True" />
         </State>
       </Pad>
     </Pads>
