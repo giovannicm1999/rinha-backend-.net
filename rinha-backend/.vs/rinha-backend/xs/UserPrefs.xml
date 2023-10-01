@@ -1,27 +1,23 @@
 ﻿<Properties StartupConfiguration="{14CC0434-4F69-4E90-AE23-0EC1DF6EAF1F}|http">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.rinha-backend PreferredExecutionTarget="/Applications/Brave Browser.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="rinha-backend/Repository/PessoaRepository.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="rinha-backend/Program.cs">
     <Files>
-      <File FileName="rinha-backend/Program.cs" Line="24" Column="24" />
-      <File FileName="rinha-backend/Controllers/PessoaController.cs" Line="24" Column="1" />
-      <File FileName="rinha-backend/Context/RinhaContext.cs" Line="17" Column="38" />
-      <File FileName="rinha-backend/Repository/PessoaRepository.cs" Line="60" Column="1" />
+      <File FileName="rinha-backend/Program.cs" Line="28" Column="11" />
+      <File FileName="rinha-backend/Controllers/PessoaController.cs" />
+      <File FileName="rinha-backend/Repository/PessoaRepository.cs" Line="32" Column="39" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
+          <Option id="ShowAllFiles" value="True" />
           <Node name="rinha-backend" expanded="True">
-            <Node name="rinha-backend" expanded="True">
-              <Node name="Context" expanded="True" />
-              <Node name="Controllers" expanded="True" />
+            <Node name="rinha-backend">
               <Node name="Entity" expanded="True" />
-              <Node name="Migrations" expanded="True" />
               <Node name="Repository" expanded="True" />
             </Node>
           </Node>
@@ -29,4 +25,5 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.rinha-backend PreferredExecutionTarget="/Applications/Brave Browser.app" />
 </Properties>

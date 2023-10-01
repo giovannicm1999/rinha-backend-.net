@@ -1,5 +1,51 @@
-version: '3.8'
+version: "3.8"
+
 services:
+  api1: # API - Instância 01
+    image: giovannicm1999/rinha-backend:latest
+    environment:
+      - ConnectionString=Host=db;Database=root;Username=postgres;Password=2309
+    depends_on:
+      - db
+    expose:
+      - "3000"
+    ports:
+      - "3000:80"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.15"
+          memory: "0.5GB"
+
+  api2: # API - Instância 02
+    image: giovannicm1999/rinha-backend:latest
+    environment:
+      - ConnectionString=Host=db;Database=root;Username=postgres;Password=2309
+    depends_on:
+      - db
+    expose:
+      - "3000"
+    ports:
+      - "3002:80"    
+    deploy:
+      resources:
+        limits:
+          cpus: "0.15"
+          memory: "0.5GB"
+
+  nginx: # Load Balancer
+    image: giovannicm1999/nginx-rinha-backend:latest
+    depends_on:
+      - api1
+      - api2
+    ports:
+      - "9999:9999"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.15"
+          memory: "0.3GB"
+
   db: # Banco de dados
     image: postgres
     ports:
@@ -11,5 +57,5 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '1.20'
-          memory: '1.7GB'
+          cpus: "1.20"
+          memory: "1.7GB"
